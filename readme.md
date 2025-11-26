@@ -30,16 +30,6 @@ Follow these steps to run the project locally on your machine.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/weather-pro-dashboard.git](https://github.com/your-username/weather-pro-dashboard.git)
+git clone [https://github.com/krissshnaverrrma/Weather-APP.git](https://github.com/krissshnaverrrma/Weather-APP.git)
 cd weather-pro-dashboard
 ---
-
-## 🤝 Connect with the Developer
-
-Built with ❤️ by **Krishna Verma**.
-
-[![GitHub](https://img.shields.io/badge/GitHub-Krishna%20Verma-white?style=for-the-badge&logo=github&logoColor=black)](https://github.com/krissshnaverrrma)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Krishna%20Verma-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/krishna-verma-43aa85315/)
----
-
-⭐ **Star this repo if you found it useful!**
