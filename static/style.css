@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+
+    color: white;
+    background: url('night-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+body.Night-Clear {
+    background-image: url('night-bg.png');
+}
+
+body.Rain {
+    background-image: url('https://images.unsplash.com/photo-1519692933481-e162a57d6721?auto=format&fit=crop&w=1920&q=80');
+}
+
+body.Clouds {
+    background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1920&q=80');
+}
+
+body.Clear {
+    background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80');
+}
+
+body.Snow {
+    background-image: url('https://images.unsplash.com/photo-1483664852095-d6cc6870705d?auto=format&fit=crop&w=1920&q=80');
+}
+
+body.Thunderstorm {
+    background-image: url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?auto=format&fit=crop&w=1920&q=80');
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px 40px;
+    gap: 15px;
+}
+
+.header-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-bar-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#cityInput {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 30px;
+    color: white;
+    outline: none;
+    text-align: center;
+    width: 300px;
+}
+
+#geoBtn {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+#geoBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.headline-compact {
+    text-align: center;
+}
+
+.title-row {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sub-row {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 2px 0;
+}
+
+.temp-row {
+    font-size: 3.5rem;
+    font-weight: 200;
+    line-height: 1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.condition-tag {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.content-section {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    min-height: 0;
+}
+
+.chart-panel {
+    flex: 2;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.details-panel {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.detail-card {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.detail-card:hover {
+    transform: translateY(-3px);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.lbl {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.val {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.footer-section {
+    flex: 0 0 130px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.forecast-card {
+    text-align: center;
+    transition: transform 0.2s;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.f-day {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.f-icon {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
+}
+
+.f-temp {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+
+.error {
+    color: #ff6b6b;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .dashboard {
+        height: auto;
+        padding: 20px 40px 10px 40px;
+        ;
+    }
+
+    .content-section {
+        flex-direction: column;
+    }
+
+    .chart-panel {
+        height: 250px;
+        flex: none;
+        width: 100%;
+    }
+
+    .details-panel {
+        grid-template-rows: auto;
+        height: auto;
+        width: 100%;
+    }
+
+    .footer-section {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 20px;
+        gap: 10px;
+    }
+}
+
+.credits {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.dev-name {
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.social-links a {
+    color: white;
+    opacity: 0.7;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}

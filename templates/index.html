@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather APP</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+
+        <div class="header-section">
+            <div class="search-bar-wrapper">
+                <form id="weatherForm">
+                    <input type="text" id="cityInput" placeholder="Search City..." autocomplete="off">
+                </form>
+                <button id="geoBtn" title="Locate Me">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="loader" class="loader hidden"></div>
+            <div id="errorMsg" class="error hidden"></div>
+
+            <div id="headlineData" class="headline-compact hidden">
+                <div class="title-row">
+                    <h1 id="cityName">--</h1>, <span id="country">--</span>
+                </div>
+                <div class="sub-row">
+                    <span id="date">--</span> • <span id="desc" class="condition-tag">--</span>
+                </div>
+                <div class="temp-row">
+                    <span id="temp">--</span>°
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section hidden" id="mainContent">
+
+            <div class="chart-panel">
+                <canvas id="weatherChart"></canvas>
+            </div>
+
+            <div class="details-panel">
+                <div class="detail-card">
+                    <span class="lbl">Feels Like</span>
+                    <span class="val" id="feelsLike">--°</span>
+                </div>
+                <div class="detail-card">
+                    <span class="lbl">Min/Max</span>
+                    <span class="val"><span id="temp_min">--</span>°/<span id="temp_max">--</span>°</span>
+                </div>
+                <div class="detail-card">
+                    <span class="lbl">Humidity</span>
+                    <span class="val"><span id="humidity">--</span>%</span>
+                </div>
+                <div class="detail-card">
+                    <span class="lbl">Wind</span>
+                    <span class="val"><span id="wind">--</span> KM/H</span>
+                </div>
+                <div class="detail-card">
+                    <span class="lbl">Sunrise</span>
+                    <span class="val" id="sunrise">--:--</span>
+                </div>
+                <div class="detail-card">
+                    <span class="lbl">Sunset</span>
+                    <span class="val" id="sunset">--:--</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section hidden" id="forecastData">
+        </div>
+        <div class="credits">
+            <p>Developed by <span class="dev-name">Krishna Verma</span></p>
+            <div class="social-links">
+                <a href="https://github.com/krissshnaverrrma" target="_blank" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/krishna-verma-43aa85315/"target="_blank" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
